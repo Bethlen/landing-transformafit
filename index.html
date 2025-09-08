@@ -1,399 +1,357 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Landing Page - TransformaFit</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow-x: hidden;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>TransformaFit | Entrenamiento funcional</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    
+        <style>
+            .img-navbar-logo{
+                max-height: 50px;
+            }
 
-        @keyframes fadeSlideIn {
-            to { opacity: 1; transform: translateY(0); }
-        }
+            header {
+                height: 90vh;
+                background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                            url("img/hero.jpg");
+                background-size: cover;
+                background-position: bottom; /* Enfocado abajo en móvil */
+                background-repeat: no-repeat;
+            }
 
-        @keyframes fadeInSection {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+            @media (min-width: 992px) {
+                header {
+                    background-position: center 75%; /* Sube un poco la imagen en desktop */
+                }
+            }
 
-        .fade-in {
-            opacity: 0;
-            animation: fadeInSection 0.8s forwards;
-        }
+            .contact-info {
+                display: flex;
+                gap: 20px; /* espacio entre esferas */
+                justify-content: center;
+                margin-top: 20px;
+            }
 
-        /* Hero */
-        .hero {
-            position: relative;
-            height: 100vh;
-            max-height: 100vh;
-            background: url("img/test-hero.png") no-repeat center center;
-            background-size: cover;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeSlideIn 1s forwards;
-            animation-delay: 0.5s;
-            text-align: center;
-            color: #fff;
-            transition: max-height 0.8s ease;
-        }
+                .contact-icon {
+                width: 60px;
+                height: 60px;
+                background-color: black;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-decoration: none;
+                transition: transform 0.3s ease;
+            }
 
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3));
-            z-index: 0;
-        }
+                .contact-icon i {
+                font-size: 28px;
+            }
 
-        .hero-text {
-            position: relative;
-            z-index: 1;
-        }
+                /* Colores por icono */
+                .contact-icon.whatsapp i {
+                color: #25D366; /* verde WhatsApp */
+            }
 
-        .hero h1 {
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-            font-size: 3.5rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeSlideIn 1s forwards;
-            animation-delay: 1s;
-        }
+                .contact-icon.instagram i {
+                color: #E1306C; /* rosado Instagram */
+            }
 
-        .hero h3 {
-            text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
-            font-weight: 400;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeSlideIn 1s forwards;
-            animation-delay: 1.5s;
-        }
+                .contact-icon.email i {
+                color: white; /* blanco Email */
+            }
 
-        /* Navbar */
-        .navbar {
-            background-color: rgba(255, 255, 255, 0.95);
-            opacity: 0;
-            transform: translateY(-20px);
-            animation: fadeSlideIn 0.8s forwards;
-            animation-delay: 0.2s;
-            padding: 0.5rem 1rem;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        }
-        .navbar:hover {
-            background-color: rgba(255, 255, 255, 1);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        .navbar-brand .logo {
-            height: 60px;
-            width: auto;
-            object-fit: contain;
-        }
-        .navbar-nav .nav-link {
-            font-size: 1.1rem;
-            padding: 0.5rem 1rem;
-            opacity: 0;
-            transform: translateY(-10px);
-            animation: fadeSlideIn 0.6s forwards;
-            transition: all 0.3s ease;
-            color: #000;
-            margin: 0 0.4rem;
-            border-radius: 50px;
-        }
-        .navbar-nav .nav-link:nth-child(1) { animation-delay: 0.4s; }
-        .navbar-nav .nav-link:nth-child(2) { animation-delay: 0.5s; }
-        .navbar-nav .nav-link:nth-child(3) { animation-delay: 0.6s; }
-        .navbar-nav .nav-link:nth-child(4) { animation-delay: 0.7s; }
+                /* Efecto hover */
+                .contact-icon:hover {
+                transform: scale(1.1);
+            }
 
-        .navbar-nav .nav-link:hover {
-            color: #fff;
-            background-color: #000;
-            transform: translateY(-2px) scale(1.05);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        }
-        .navbar-nav .nav-link.active {
-            color: #fff;
-            background-color: #000;
-            font-weight: 600;
-            transform: scale(1.05);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-        }
+            /* Importa tu fuente */
+            /* Importa la fuente */
+            @font-face {
+                font-family: 'BowlbyFont';
+                src: url('assets/BowlbyFont.ttf') format('truetype');
+                font-weight: normal;
+                font-style: normal;
+            }
 
-        section {
-            padding: 5rem 0;
-        }
+            p, span, li, a, small {
+                font-family: 'Inter', sans-serif;
+                font-weight: 400; /* más legible que 100 */
+                font-size: 1rem;  /* ajustar según tamaño base de Bootstrap */
+                line-height: 1.6;
+            }
 
-        /* Sobre mí */
-        #sobre-mi {
-            background-color: #f8f9fa;
-        }
-        #sobre-mi img {
-            max-width: 250px;
-            border-radius: 50%;
-        }
 
-        /* Servicios */
-        .card h5 {
-            margin-bottom: 0.5rem;
-        }
 
-        /* Contacto */
-        #contacto iframe {
-            width: 100%;
-            height: 350px;
-            border: 0;
-        }
-        .contact-info {
-            display: flex;
-            justify-content: space-around;
-            text-align: center;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-        .contact-card {
-            background-color: #f1f1f1;
-            border-radius: 50px;
-            padding: 1rem 1.5rem;
-            margin: 0.5rem;
-            flex: 1 1 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.8rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .contact-card i {
-            font-size: 1.8rem;
-            color: #000;
-            background-color: #fff;
-            border-radius: 50%;
-            width: 3rem;
-            height: 3rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .contact-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
+            h1, h2, h3, h4, h5, h6 {
+                font-family: 'BowlbyFont', sans-serif;
+                font-weight: inherit;
+                background: linear-gradient(90deg, #2E2381, #C4BFEF); /* 2 tonos */
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
 
-        .form-control, .btn {
-            margin-bottom: 1rem;
-        }
+            /* Clase para texto normal con fuente “normal” */
+            .exception-text {
+                font-family: Arial, Helvetica, sans-serif; /* o la que prefieras */
+                font-weight: normal;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
 
-        /* Secciones ocultas debajo del hero */
-        section {
-            position: absolute;
-            top: 40vh;
-            left: 0;
-            width: 100%;
-            padding: 2rem 0;
-            display: none;
-            z-index: 2;
-            background-color: #fff;
-        }
-    </style>
-</head>
-<body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg fixed-top shadow-sm">
-        <div class="container px-4">
-            <a class="navbar-brand fw-bold" href="#">
-                <img src="img/test-logo.png" alt="Logo" class="logo" />
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNav" aria-controls="navbarNav"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Sobre mí</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Servicios</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
-                </ul>
+            .hero-text {
+                background: linear-gradient(90deg, #2E2381, #C4BFEF, #C8E5AA, #F18B68, #FDE0C8);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="#!"><img class="img-navbar-logo" src="img/navbar-logo.png" alt="Logo TransformaFit"/></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#section-portada">Portada</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#section-sobre-mi">Sobre mí</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#section-planes">Planes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#section-contacto">Contacto</a></li>
+                    </ul>
+                    <!--
+                    <form class="d-flex">
+                        <button class="btn btn-outline-dark" type="submit">
+                            <i class="bi-cart-fill me-1"></i>
+                            Cart
+                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                        </button>
+                    </form>
+                    -->
+                </div>
             </div>
-        </div>
-    </nav>
-
-    <!-- Hero -->
-    <div class="hero">
-        <div class="hero-text">
-            <h1 class="fw-bold display-3">TRANSFORMAFIT</h1>
-            <h3>Entrenamiento funcional personalizado para alcanzar tus objetivos, con un espacio seguro y motivador</h3>
-        </div>
-    </div>
-
-    <!-- Sobre mí -->
-    <section id="sobre-mi">
-        <div class="container px-4 px-lg-5">
+        </nav>
+        <!-- Header-->
+        <header class="bg-dark py-5" id="section-portada">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                   <h1 class="display-4 fw-bolder text-center hero-text">
+                        TransformaFit
+                    </h1>
+                    <p class="lead fw-normal mb-0">Entrenamiento funcional personalizado para alcanzar tus objetivos, con un espacio seguro y motivador</p>
+                </div>
+            </div>
+        </header>
+        <!-- Section Sobre mí-->
+        <section class="py-5" id="section-sobre-mi">
+            <div class="container px-4 px-lg-5">
             <div class="row align-items-center">
                 <div class="col-md-4 text-center mb-4">
                     <img src="https://dummyimage.com/250x250/000/fff" alt="Agustín Fritz" class="img-fluid rounded-circle shadow">
                 </div>
                 <div class="col-md-8">
                     <h2>Sobre Agustín Fritz</h2>
-                    <p>Hola, soy Agustín Fritz (he/el), Coach de entrenamiento funcional, Instructor Kettlebell inicial y apasionado por encontrar el equilibrio entre cuerpo y mente. Estudié Educación Física en la Universidad Católica de Chile y creé TransformaFit para ofrecer un espacio seguro, inclusivo y motivador para personas trans y de todas las edades, ayudándoles a lograr sus objetivos a través de un entrenamiento funcional personalizado.</p>
+                    <p class="exception-text">Hola, soy Agustín Fritz (he/el), Coach de entrenamiento funcional y apasionado por encontrar el equilibrio entre cuerpo y mente. Estudié Educación Física en la Universidad Católica de Chile y creé TransformaFit para ofrecer un espacio seguro, inclusivo y motivador para personas trans y de todas las edades, ayudándoles a lograr sus objetivos a través de un entrenamiento funcional personalizado.</p>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Servicios -->
-    <section id="servicios-section" class="py-5">
-        <div class="container px-4 px-lg-5 mt-5">
-            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                <div class="col mb-5">
-                    <div class="card h-100">
-                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="Asesoría Presencial" />
-                        <div class="card-body p-4 text-center">
-                            <h5 class="fw-bolder">Asesoría Presencial</h5>
-                            $7.000 por clase / 4 clases $20.000 / 8 clases $40.000
+        </section>
+        <!-- Section Planes-->
+        <section class="py-5" id="section-planes">
+            <div class="container px-4 px-lg-5 mt-5">
+                <h2 class="text-center mb-5">Planes</h2>
+                <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 justify-content-center">
+                    
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <p class="fw-bolder">Adulto Inicial</p>
+                                    <!-- Product price-->
+                                    Lunes 19:00 / Sábado 10:30
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto btn-precios" href="#">Ver precios</a></div>
+                            </div>
                         </div>
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
-                            <a class="btn btn-outline-dark mt-auto" href="#">Más info</a>
+                    </div>
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Sale badge-->
+                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">OFERTA</div>
+                            <!-- Product image-->
+                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                     <!-- Product name-->
+                                    <p class="fw-bolder">Adulto Intermedio</p>
+                                    <!-- Product price-->
+                                    Martes 20:00 / Sábado 09:30
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto btn-precios" href="#">Ver precios</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Sale badge-->
+                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">OFERTA</div>
+                            <!-- Product image-->
+                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                     <!-- Product name-->
+                                    <p class="fw-bolder">Disidencias y Mujeres</p>
+                                    <!-- Product price-->
+                                    Martes 18:00 / Jueves 18:00 / Sábado 11:30
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto btn-precios" href="#">Ver precios</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                     <!-- Product name-->
+                                    <p class="fw-bolder">Trans Intermedio</p>
+                                    <!-- Product price-->
+                                    Jueves 19:00 / Sábado 12:30
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto btn-precios" href="#">Ver precios</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Sale badge-->
+                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">OFERTA</div>
+                            <!-- Product image-->
+                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                     <!-- Product name-->
+                                    <p class="fw-bolder">Asesoría Presencial</p>
+                                    <!-- Product price-->
+                                    Horarios personalizados
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto btn-precios" href="#">Ver precios</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                     <!-- Product name-->
+                                    <p class="fw-bolder">Asesoría Online</p>
+                                    <!-- Product price-->
+                                     Horarios personalizados
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </section>
+
+         <!-- Section Contacto-->
+        <section class="py-5" id="section-contacto">
+            
+            <div class="container px-4 px-lg-5">
+                <h2 class="text-center mb-5">Contacto y ubicación</h2>
+                <div class="contact-info text-center mt-4">
+                    <a href="https://wa.me/56951481879" target="_blank" class="contact-icon whatsapp">
+                        <i class="bi bi-whatsapp"></i>
+                    </a>
+                    <a href="mailto:contacto@transformafit.cl" class="contact-icon email">
+                        <i class="bi bi-envelope-fill"></i>
+                    </a>
+                    <a href="https://www.instagram.com/_transforma_.fit/" target="_blank" class="contact-icon instagram">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                </div>
+                <br>
+
+                <div class="row mb-4 justify-content-center">
+                    <div class="col-12 col-md-10">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.2332590708525!2d-70.63175902343595!3d-33.44322889714384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c57897d3a465%3A0xfc65ea5e9fa3c3ce!2sSeminario%20176%2C%207501228%20Providencia%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses-419!2scl!4v1757290965825!5m2!1ses-419!2scl" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
                 </div>
-                <div class="col mb-5">
-                    <div class="card h-100">
-                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="Asesoría Offline" />
-                        <div class="card-body p-4 text-center">
-                            <h5 class="fw-bolder">Asesoría Offline</h5>
-                            Creación de rutinas en casa/gym, distribución de cargas, horarios según disponibilidad. Precio: $25.000 / mes
-                        </div>
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
-                            <a class="btn btn-outline-dark mt-auto" href="#">Más info</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col mb-5">
-                    <div class="card h-100">
-                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="Entrenamiento Funcional" />
-                        <div class="card-body p-4 text-center">
-                            <h5 class="fw-bolder">Entrenamiento Funcional</h5>
-                            Movilidad, fuerza y resistencia para mujeres, disidencias y personas generales. Martes y jueves 18-19. Precio: $7.000 / clase
-                        </div>
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
-                            <a class="btn btn-outline-dark mt-auto" href="#">Más info</a>
-                        </div>
-                    </div>
-                </div>
+
+                
             </div>
-        </div>
-    </section>
+        </section>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <!-- SweetAlert2 -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            // Seleccionamos todos los botones con la clase btn-precios
+            const btnPrecios = document.querySelectorAll('.btn-precios');
 
-    <!-- Contacto -->
-    <section id="contacto">
-        <div class="container px-4 px-lg-5">
-            <h2 class="text-center mb-5">Contacto</h2>
-            <div class="row mb-4">
-                <div class="col-12">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.911777703629!2d-70.63124978479807!3d-33.437313080782315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cf2b04f5f53d%3A0x0!2sSeminario%20176%2C%20Parque%20Bustamante%2C%20Santiago!5e0!3m2!1ses!2scl!4v1694070000000!5m2!1ses!2scl" allowfullscreen="" loading="lazy"></iframe>
-                </div>
-            </div>
-            <div class="contact-info">
-                <div class="contact-card"><i class="bi bi-geo-alt-fill"></i><div><strong>Dirección</strong><br>Seminario 176, Metro Parque Bustamante</div></div>
-                <div class="contact-card"><i class="bi bi-whatsapp"></i><div><strong>WhatsApp</strong><br><a href="https://wa.me/56951481879">+56 9 5148 1879</a></div></div>
-                <div class="contact-card"><i class="bi bi-envelope-fill"></i><div><strong>Email</strong><br><a href="mailto:contacto@transformafit.cl">contacto@transformafit.cl</a></div></div>
-                <div class="contact-card"><i class="bi bi-instagram"></i><div><strong>Instagram</strong><br><a href="https://www.instagram.com/_transforma_.fit/" target="_blank">@_transforma_.fit</a></div></div>
-            </div>
-            <div class="row mt-4">
-                <div class="col-md-6 offset-md-3">
-                    <h5>Formulario de Contacto</h5>
-                    <form>
-                        <input type="text" class="form-control" placeholder="Nombre" required>
-                        <input type="email" class="form-control" placeholder="Correo" required>
-                        <textarea class="form-control" rows="5" placeholder="Mensaje" required></textarea>
-                        <button type="submit" class="btn btn-dark w-100">Enviar</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+            btnPrecios.forEach(btn => {
+                btn.addEventListener('click', function(event) {
+                    event.preventDefault(); // Evita que siga el enlace
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Script navegación con cierre de menú mobile -->
-    <script>
-        const linkInicio = document.querySelector('.nav-link[href="#"]');
-        const linkSobre = Array.from(document.querySelectorAll('.nav-link')).find(l => l.textContent.trim() === "Sobre mí");
-        const linkServicios = Array.from(document.querySelectorAll('.nav-link')).find(l => l.textContent.trim() === "Servicios");
-        const linkContacto = Array.from(document.querySelectorAll('.nav-link')).find(l => l.textContent.trim() === "Contacto");
-
-        const hero = document.querySelector('.hero');
-        const sobreSection = document.getElementById('sobre-mi');
-        const serviciosSection = document.getElementById('servicios-section');
-        const contactoSection = document.getElementById('contacto');
-
-        const navbarCollapse = document.getElementById('navbarNav'); // Menu colapsable
-
-        function hideAll() {
-            hero.style.maxHeight = '100vh';
-            [sobreSection, serviciosSection, contactoSection].forEach(section => {
-                section.style.display = 'none';
-                section.classList.remove('fade-in'); // Reinicia animación
+                    Swal.fire({
+                        icon: 'info',
+                        title: 'Función no habilitada',
+                        text: 'Esta opción aún no está disponible. ¡Pronto la habilitaremos!',
+                        confirmButtonText: 'Entendido'
+                    });
+                });
             });
-            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
-        }
-
-        function showSection(section, link) {
-            hideAll();
-            hero.style.maxHeight = '40vh';
-            section.style.display = 'block';
-            void section.offsetWidth; // Forzar reflow
-            section.classList.add('fade-in');
-            link.classList.add('active');
-        }
-
-        function collapseNavbar() {
-            if (navbarCollapse.classList.contains('show')) {
-                const bsCollapse = bootstrap.Collapse.getOrCreateInstance(navbarCollapse);
-                bsCollapse.hide();
-            }
-        }
-
-        linkInicio.addEventListener('click', e => {
-            e.preventDefault();
-            hideAll();
-            hero.style.maxHeight = '100vh';
-            linkInicio.classList.add('active');
-            collapseNavbar();
-        });
-
-        linkSobre.addEventListener('click', e => {
-            e.preventDefault();
-            showSection(sobreSection, linkSobre);
-            collapseNavbar();
-        });
-
-        linkServicios.addEventListener('click', e => {
-            e.preventDefault();
-            showSection(serviciosSection, linkServicios);
-            collapseNavbar();
-        });
-
-        linkContacto.addEventListener('click', e => {
-            e.preventDefault();
-            showSection(contactoSection, linkContacto);
-            collapseNavbar();
-        });
-    </script>
-</body>
+        </script>
+    </body>
 </html>
