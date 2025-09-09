@@ -4,38 +4,58 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
-        <meta name="author" content="" />
+        <meta name="author" content="Cristobal Puga" />
         <title>TransformaFit | Entrenamiento funcional</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
+        <!-- Core theme CSS (incluye Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
     
         <style>
+            /* Ajuste de anclas al hacer scroll */
+            #section-portada,
+            #section-sobre-mi,
+            #section-planes,
+            #section-contacto {
+            scroll-margin-top: 75px;
+            }
+
+            @media (max-width: 991.98px) {
+                #section-portada,
+                #section-sobre-mi,
+                #section-planes,
+                #section-contacto {
+                    scroll-margin-top: 235px;
+                }
+            }
+
+            /* Control de tamaño para el logo en navbar */
             .img-navbar-logo{
                 max-height: 50px;
             }
 
+            /* Control de recorte de imagen para Desktop y Mobile */
             header {
                 height: 90vh;
                 background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
                             url("img/hero.jpg");
                 background-size: cover;
-                background-position: bottom; /* Enfocado abajo en móvil */
+                background-position: bottom;
                 background-repeat: no-repeat;
             }
 
             @media (min-width: 992px) {
                 header {
-                    background-position: center 75%; /* Sube un poco la imagen en desktop */
+                    background-position: center 75%;
                 }
             }
-
+            
+            /* Configuración de esferas con links */
             .contact-info {
                 display: flex;
-                gap: 20px; /* espacio entre esferas */
+                gap: 20px;
                 justify-content: center;
                 margin-top: 20px;
             }
@@ -56,26 +76,23 @@
                 font-size: 28px;
             }
 
-                /* Colores por icono */
                 .contact-icon.whatsapp i {
-                color: #25D366; /* verde WhatsApp */
+                color: #25D366;
             }
 
                 .contact-icon.instagram i {
-                color: #E1306C; /* rosado Instagram */
+                color: #E1306C;
             }
 
                 .contact-icon.email i {
-                color: white; /* blanco Email */
+                color: white;
             }
 
-                /* Efecto hover */
                 .contact-icon:hover {
                 transform: scale(1.1);
             }
 
-            /* Importa tu fuente */
-            /* Importa la fuente */
+            /* Configuración de la fuente Bowlby */
             @font-face {
                 font-family: 'BowlbyFont';
                 src: url('assets/BowlbyFont.ttf') format('truetype');
@@ -85,24 +102,21 @@
 
             p, span, li, a, small {
                 font-family: 'Inter', sans-serif;
-                font-weight: 400; /* más legible que 100 */
-                font-size: 1rem;  /* ajustar según tamaño base de Bootstrap */
+                font-weight: 400;
+                font-size: 1rem;
                 line-height: 1.6;
             }
-
-
 
             h1, h2, h3, h4, h5, h6 {
                 font-family: 'BowlbyFont', sans-serif;
                 font-weight: inherit;
-                background: linear-gradient(90deg, #2E2381, #C4BFEF); /* 2 tonos */
+                background: linear-gradient(90deg, #2E2381, #C4BFEF);
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
             }
 
-            /* Clase para texto normal con fuente “normal” */
             .exception-text {
-                font-family: Arial, Helvetica, sans-serif; /* o la que prefieras */
+                font-family: Arial, Helvetica, sans-serif;
                 font-weight: normal;
                 -webkit-font-smoothing: antialiased;
                 -moz-osx-font-smoothing: grayscale;
@@ -113,17 +127,82 @@
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
             }
+
+            /* Estilo para el iframe de Google Maps */
+            #section-contacto iframe {
+                border-radius: 15px;              /* esquinas redondeadas */
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* sombra suave */
+            }
+
+            /* Modales dinámicos */
+            .modal-content {
+                border-radius: 15px;
+                box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+                overflow: hidden;
+            }
+
+            .modal-header {
+                background: linear-gradient(90deg, #2E2381, #3B2E8E);
+                border-bottom: none;
+            }
+
+            .modal .modal-title {
+                font-family: 'BowlbyFont', sans-serif;
+                color: white !important;
+                background: none !important;
+                -webkit-background-clip: unset !important;
+                -webkit-text-fill-color: unset !important;
+            }
+
+            .modal .btn-close {
+                filter: invert(1);
+            }
+
+            .modal-body {
+                font-family: 'Inter', sans-serif;
+                font-size: 0.95rem;
+                line-height: 1.5;
+            }
+
+            .plan-section {
+                margin-bottom: 15px;
+            }
+
+            .plan-section h6 {
+                font-weight: 600;
+                margin-bottom: 5px;
+            }
+
+            .plan-prices {
+                list-style: none;
+                padding-left: 0;
+            }
+
+            .plan-prices li {
+                padding: 6px 10px;
+                margin-bottom: 5px;
+                border-radius: 8px;
+                background-color: #f5f5f5;
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .plan-prices li span:first-child {
+                font-weight: 500;
+            }
+
+
         </style>
     </head>
     <body>
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
             <div class="container px-4 px-lg-5">
                 <a class="navbar-brand" href="#!"><img class="img-navbar-logo" src="img/navbar-logo.png" alt="Logo TransformaFit"/></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#section-portada">Portada</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#section-portada">Portada</a></li>
                         <li class="nav-item"><a class="nav-link" href="#section-sobre-mi">Sobre mí</a></li>
                         <li class="nav-item"><a class="nav-link" href="#section-planes">Planes</a></li>
                         <li class="nav-item"><a class="nav-link" href="#section-contacto">Contacto</a></li>
@@ -287,7 +366,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto btn-precios" href="#">Ver precios</a></div>
                             </div>
                         </div>
                     </div>
@@ -326,32 +405,385 @@
                 
             </div>
         </section>
+
+
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
         </footer>
+
+
+        <!-- MODALS -->
+        <!-- Adulto Inicial -->
+        <div class="modal fade" id="modalAdultoInicial" tabindex="-1" aria-labelledby="modalAdultoInicialLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalAdultoInicialLabel">Adulto Inicial</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <div class="plan-section">
+                <h6>Descripción</h6>
+                <p>Entrenamiento funcional básico para quienes comienzan, enfocado en técnica y resistencia.</p>
+                </div>
+                <div class="plan-section">
+                <h6>Horarios</h6>
+                <p>Martes 19:00 / Sábado 10:30</p>
+                </div>
+                <div class="plan-section">
+                <h6>Precios</h6>
+                <ul class="plan-prices">
+                    <li><span>Clase suelta</span><span>$7.000</span></li>
+                    <li><span>4 clases</span><span>$20.000</span></li>
+                    <li><span>8 clases</span><span>$40.000</span></li>
+                </ul>
+                <div class="text-center mt-3">
+                    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalFormulario">
+                        Inscribirse
+                    </button>
+                </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- Adulto Intermedio -->
+        <div class="modal fade" id="modalAdultoIntermedio" tabindex="-1" aria-labelledby="modalAdultoIntermedioLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalAdultoIntermedioLabel">Adulto Intermedio</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <div class="plan-section">
+                <h6>Descripción</h6>
+                <p>Nivel intermedio para mejorar fuerza y coordinación.</p>
+                </div>
+                <div class="plan-section">
+                <h6>Horarios</h6>
+                <p>Martes 20:00 / Sábado 09:30</p>
+                </div>
+                <div class="plan-section">
+                <h6>Precios</h6>
+                <ul class="plan-prices">
+                    <li><span>Clase suelta</span><span>$7.000</span></li>
+                    <li><span>4 clases</span><span>$20.000</span></li>
+                    <li><span>8 clases</span><span>$40.000</span></li>
+                </ul>
+                <div class="text-center mt-3">
+                    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalFormulario">
+                        Inscribirse
+                    </button>
+                </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- Disidencias y Mujeres -->
+        <div class="modal fade" id="modalDisidenciasMujeres" tabindex="-1" aria-labelledby="modalDisidenciasMujeresLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalDisidenciasMujeresLabel">Disidencias y Mujeres</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <div class="plan-section">
+                <h6>Descripción</h6>
+                <p>Entrenamiento inclusivo centrado en fuerza y movilidad.</p>
+                </div>
+                <div class="plan-section">
+                <h6>Horarios</h6>
+                <p>Martes y Jueves 18:00 / Sábado 11:30</p>
+                </div>
+                <div class="plan-section">
+                <h6>Precios</h6>
+                <ul class="plan-prices">
+                    <li><span>Clase suelta</span><span>$7.000</span></li>
+                    <li><span>4 clases</span><span>$20.000</span></li>
+                    <li><span>8 clases</span><span>$40.000</span></li>
+                    <li><span>12 clases</span><span>$55.000</span></li>
+                </ul>
+                <div class="text-center mt-3">
+                    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalFormulario">
+                        Inscribirse
+                    </button>
+                </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- Trans Intermedio -->
+        <div class="modal fade" id="modalTransIntermedio" tabindex="-1" aria-labelledby="modalTransIntermedioLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTransIntermedioLabel">Trans Intermedio</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <div class="plan-section">
+                <h6>Descripción</h6>
+                <p>Entrenamiento avanzado adaptado para personas trans.</p>
+                </div>
+                <div class="plan-section">
+                <h6>Horarios</h6>
+                <p>Jueves 19:00 / Sábado 12:30</p>
+                </div>
+                <div class="plan-section">
+                <h6>Precios</h6>
+                <ul class="plan-prices">
+                    <li><span>Clase suelta</span><span>$7.000</span></li>
+                    <li><span>4 clases</span><span>$20.000</span></li>
+                    <li><span>8 clases</span><span>$40.000</span></li>
+                </ul>
+                <div class="text-center mt-3">
+                    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalFormulario">
+                        Inscribirse
+                    </button>
+                </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- Asesoría Presencial -->
+        <div class="modal fade" id="modalAsesoriaPresencial" tabindex="-1" aria-labelledby="modalAsesoriaPresencialLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalAsesoriaPresencialLabel">Asesoría Presencial</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <div class="plan-section">
+                <h6>Descripción</h6>
+                <p>Sesiones presenciales personalizadas.</p>
+                </div>
+                <div class="plan-section">
+                <h6>Precios</h6>
+                <ul class="plan-prices">
+                    <li><span>1 vez/semana</span><span>$50.000</span></li>
+                    <li><span>2 veces/semana</span><span>$70.000</span></li>
+                    <li><span>3 veces/semana</span><span>$90.000</span></li>
+                </ul>
+                <div class="text-center mt-3">
+                    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalFormulario">
+                        Inscribirse
+                    </button>
+                </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- Asesoría Online -->
+        <div class="modal fade" id="modalAsesoriaOnline" tabindex="-1" aria-labelledby="modalAsesoriaOnlineLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalAsesoriaOnlineLabel">Asesoría Online</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <div class="plan-section">
+                <h6>Descripción</h6>
+                <p>Planificación y seguimiento personalizado de entrenamiento a distancia.</p>
+                </div>
+                <div class="plan-section">
+                <h6>Precios</h6>
+                <ul class="plan-prices">
+                    <li><span>1 sesión/mes</span><span>$30.000</span></li>
+                    <li><span>2 sesiones/mes</span><span>$40.000</span></li>
+                    <li><span>3 sesiones/mes</span><span>$50.000</span></li>
+                </ul>
+                <div class="text-center mt-3">
+                    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalFormulario">
+                        Inscribirse
+                    </button>
+                </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- Modal Formulario -->
+        <div class="modal fade" id="modalFormulario" tabindex="-1" aria-labelledby="modalFormularioLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalFormularioLabel">Formulario de Inscripción</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formInscripcion">
+                <!-- Selección de Plan -->
+                <div class="mb-3">
+                    <label for="selectPlan" class="form-label">Selecciona tu plan:</label>
+                    <select class="form-select" id="selectPlan" required>
+                    <option value="" disabled selected>-- Elige un plan --</option>
+                    <option value="Adulto Inicial">Adulto Inicial</option>
+                    <option value="Adulto Intermedio">Adulto Intermedio</option>
+                    <option value="Disidencias y Mujeres">Disidencias y Mujeres</option>
+                    <option value="Trans Intermedio">Trans Intermedio</option>
+                    <option value="Asesoría Presencial">Asesoría Presencial</option>
+                    <option value="Asesoría Online">Asesoría Online</option>
+                    </select>
+                </div>
+
+                <!-- Días disponibles -->
+                <div class="mb-3">
+                    <label class="form-label">Días a asistir:</label>
+                    <div id="diasCheckboxes"></div>
+                </div>
+
+                <!-- Total -->
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Total: </label>
+                    <span id="totalPrecio">$0</span>
+                </div>
+
+                <button type="submit" class="btn btn-success">Enviar</button>
+                </form>
+            </div>
+            </div>
+        </div>
+        </div>
+
+
+
+
+
+
+
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
-        <!-- SweetAlert2 -->
+        <!-- SweetAlert -->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        <!--Auto collapse navbar-->
         <script>
-            // Seleccionamos todos los botones con la clase btn-precios
-            const btnPrecios = document.querySelectorAll('.btn-precios');
+            document.querySelectorAll('.navbar-nav .nav-link').forEach(function(navLink) {
+                navLink.addEventListener('click', function() {
+                    const navbarCollapse = document.querySelector('.navbar-collapse');
+                    if (navbarCollapse.classList.contains('show')) {
+                        new bootstrap.Collapse(navbarCollapse).toggle();
+                    }
+                });
+            });
+        </script>
 
-            btnPrecios.forEach(btn => {
-                btn.addEventListener('click', function(event) {
-                    event.preventDefault(); // Evita que siga el enlace
+        <script>
+            document.querySelectorAll('.btn-precios').forEach(btn => {
+            btn.addEventListener('click', function(event) {
+                event.preventDefault();
 
-                    Swal.fire({
-                        icon: 'info',
-                        title: 'Función no habilitada',
-                        text: 'Esta opción aún no está disponible. ¡Pronto la habilitaremos!',
-                        confirmButtonText: 'Entendido'
+                let planName = this.closest('.card').querySelector('p.fw-bolder').innerText;
+                let modalId = '';
+
+                switch(planName){
+                    case 'Adulto Inicial': modalId = 'modalAdultoInicial'; break;
+                    case 'Adulto Intermedio': modalId = 'modalAdultoIntermedio'; break;
+                    case 'Disidencias y Mujeres': modalId = 'modalDisidenciasMujeres'; break;
+                    case 'Trans Intermedio': modalId = 'modalTransIntermedio'; break;
+                    case 'Asesoría Presencial': modalId = 'modalAsesoriaPresencial'; break;
+                    case 'Asesoría Online': modalId = 'modalAsesoriaOnline'; break;
+                }
+
+                const modalElement = document.getElementById(modalId);
+                const myModal = new bootstrap.Modal(modalElement);
+                myModal.show();
+            });
+        });
+
+        </script>
+
+        <script>
+            const planData = {
+                "Adulto Inicial": { dias: ["Martes", "Sábado"], precio: 7000 },
+                "Adulto Intermedio": { dias: ["Martes", "Sábado"], precio: 7000 },
+                "Disidencias y Mujeres": { dias: ["Martes", "Jueves", "Sábado"], precio: 7000 },
+                "Trans Intermedio": { dias: ["Jueves", "Sábado"], precio: 7000 },
+                "Asesoría Presencial": { dias: ["Personalizado"], precio: 50000 }, // precio base por 1 vez
+                "Asesoría Online": { dias: ["Personalizado"], precio: 30000 } // precio base por 1 sesión
+            };
+
+            const selectPlan = document.getElementById("selectPlan");
+            const diasContainer = document.getElementById("diasCheckboxes");
+            const totalPrecio = document.getElementById("totalPrecio");
+
+            selectPlan.addEventListener("change", () => {
+                const plan = selectPlan.value;
+                diasContainer.innerHTML = "";
+                totalPrecio.textContent = "$0";
+
+                if(planData[plan]){
+                    planData[plan].dias.forEach(dia => {
+                        const id = "dia-" + dia.replace(/\s+/g, "");
+                        const checkbox = document.createElement("div");
+                        checkbox.classList.add("form-check");
+                        checkbox.innerHTML = `
+                            <input class="form-check-input dia-checkbox" type="checkbox" value="${dia}" id="${id}">
+                            <label class="form-check-label" for="${id}">${dia}</label>
+                        `;
+                        diasContainer.appendChild(checkbox);
+                    });
+                }
+
+                // Agregar listener a los checkboxes
+                document.querySelectorAll(".dia-checkbox").forEach(chk => {
+                    chk.addEventListener("change", () => {
+                        const seleccionadas = document.querySelectorAll(".dia-checkbox:checked").length;
+                        let precioTotal = 0;
+                        if(planData[plan]){
+                            precioTotal = seleccionadas * planData[plan].precio;
+                        }
+                        totalPrecio.textContent = "$" + precioTotal.toLocaleString();
                     });
                 });
             });
+
+            // Form submit (puedes reemplazar por tu acción real)
+            document.getElementById("formInscripcion").addEventListener("submit", (e) => {
+                e.preventDefault();
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Función no habilitada',
+                    text: 'El envío del formulario aún no está activo.',
+                    confirmButtonText: 'Aceptar'
+                });
+            });
+
         </script>
     </body>
 </html>
